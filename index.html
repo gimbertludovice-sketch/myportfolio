@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gimbert Ludovice — Task Portfolio | BSIT MWD WITMWD3M1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Press+Start+2P&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-void: #05050a;
+    --rog-red: #ff0044;
+    --electric-purple: #b026ff;
+    --cyber-cyan: #00eaff;
+    --text-primary: #eef1f8;
+    --text-secondary: #9aa1ba;
+    --line: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: var(--bg-void);
+    color: var(--text-primary);
+  }
+
+  /* ---------------- TOP NAV (task switcher) ---------------- */
+  .task-nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 10px;
+    background: #0a0a12;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .task-nav .brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px; font-weight: 700; color: var(--cyber-cyan);
+    letter-spacing: 1px; white-space: nowrap; margin-right: 6px;
+  }
+  .task-nav button {
+    font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 13.5px;
+    color: var(--text-secondary); background: transparent;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 16px; cursor: pointer; white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .task-nav button:hover { color: var(--text-primary); border-color: var(--cyber-cyan); }
+  .task-nav button.active {
+    color: #05050a; background: var(--cyber-cyan); border-color: var(--cyber-cyan);
+    box-shadow: 0 0 14px rgba(0,234,255,0.5);
+  }
+  .task-nav button:focus-visible { outline: 3px solid var(--electric-purple); outline-offset: 2px; }
+
+  .task-panel { display: none; height: calc(100% - 53px); }
+  .task-panel.active { display: block; }
+
+  .task-frame {
+    display: block; width: 100%; height: 100%; border: 0; background: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .task-nav { padding: 8px 10px; gap: 8px; }
+    .task-nav .brand { display: none; }
+    .task-nav button { padding: 6px 12px; font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="task-nav">
+  <span class="brand">// GIMBERT LUDOVICE — WITMWD3M1</span>
+  <button type="button" class="nav-btn active" data-target="task1">Task 1 — App Planning</button>
+  <button type="button" class="nav-btn" data-target="task2">Task 2 — UI/UX &amp; Material Design</button>
+  <button type="button" class="nav-btn" data-target="task4">Task 4 — Kotlin Fundamentals</button>
+</nav>
+
+<div class="task-panel active" id="panel-task1">
+  <iframe class="task-frame" title="Task 1 — App Planning" srcdoc="&lt;!--
+  Student Name: Gimbert Ludovice
+  Year &amp; Section: 2nd Year, WITMWD3M1
+  Professor: John Kyle Martin
+  Subject: HTML5 / Mobile App Planning — Task 1 (App Planning Phase)
+--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; data-mode=&quot;wireframe&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;TaskFlow — Wireframe → Mockup → Semantic HTML5&lt;/title&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Sora:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+  :root{
+    --radius: 14px;
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 28px;
+    --space-4: 48px;
+    --font-mono: &#x27;JetBrains Mono&#x27;, monospace;
+    --font-display: &#x27;Sora&#x27;, sans-serif;
+    --font-body: &#x27;Inter&#x27;, sans-serif;
+  }
+
+  /* ---------- WIREFRAME MODE TOKENS ---------- */
+  html[data-mode=&quot;wireframe&quot;]{
+    --bg: #0B2545;
+    --surface: #10305F;
+    --surface-2: #163B70;
+    --line: #4FD8EB;
+    --text: #EAF6FF;
+    --text-dim: #8FB3D9;
+    --accent: #FFB300;
+    --border-style: dashed;
+    --border-w: 2px;
+    --font-ui: var(--font-mono);
+    --shadow: none;
+    --radius-active: 4px;
+  }
+
+  /* ---------- MOCKUP MODE TOKENS ---------- */
+  html[data-mode=&quot;mockup&quot;]{
+    --bg: #FBFAF7;
+    --surface: #FFFFFF;
+    --surface-2: #F1F5F4;
+    --line: #E4E4E0;
+    --text: #142A2E;
+    --text-dim: #5B6E70;
+    --accent-primary: #FF6B4A;
+    --accent-secondary: #17A398;
+    --border-style: solid;
+    --border-w: 1px;
+    --font-ui: var(--font-body);
+    --shadow: 0 10px 30px rgba(20,42,46,0.08);
+    --radius-active: var(--radius);
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ui);
+    transition: background .3s ease, color .3s ease;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; }
+  }
+
+  a{ color: inherit; }
+
+  /* Annotation badges — only meaningful in wireframe mode */
+  .tag-badge{
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--line);
+    border: 1px dashed var(--line);
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-bottom: var(--space-1);
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity .25s ease;
+  }
+  html[data-mode=&quot;wireframe&quot;] .tag-badge{
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* ---------- HEADER / NAV ---------- */
+  header{
+    position: sticky; top:0; z-index: 10;
+    background: var(--surface);
+    border-bottom: var(--border-w) var(--border-style) var(--line);
+  }
+  nav{
+    max-width: 1080px; margin: 0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: var(--space-2) var(--space-3);
+    gap: var(--space-2);
+  }
+  .logo{
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  html[data-mode=&quot;mockup&quot;] .logo{ color: var(--accent-secondary); }
+  .nav-links{
+    list-style:none; display:flex; gap: var(--space-3);
+    margin:0; padding:0; font-size: 14px;
+  }
+  .nav-links a{ text-decoration:none; opacity:.85; }
+  .nav-links a:hover{ opacity:1; }
+
+  #fidelity-toggle{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1.5px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+  }
+  html[data-mode=&quot;mockup&quot;] #fidelity-toggle{
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #fff;
+  }
+  #fidelity-toggle:focus-visible{
+    outline: 3px solid var(--accent, var(--accent-secondary));
+    outline-offset: 2px;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main{ max-width: 1080px; margin: 0 auto; padding: var(--space-4) var(--space-3); }
+
+  section{ margin-bottom: var(--space-4); }
+
+  /* HERO */
+  .hero{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-4);
+    align-items:center;
+  }
+  .hero h1{
+    font-family: var(--font-display);
+    font-size: 40px; line-height:1.1; margin: 0 0 var(--space-2);
+  }
+  html[data-mode=&quot;mockup&quot;] .hero h1{ color: var(--text); }
+  .hero p{ color: var(--text-dim); font-size: 16px; line-height:1.6; max-width: 46ch; }
+  .cta{
+    display:inline-block; margin-top: var(--space-3);
+    padding: 12px 22px; border-radius: var(--radius-active);
+    border: var(--border-w) var(--border-style) var(--line);
+    font-weight: 600; text-decoration:none; font-size: 14px;
+  }
+  html[data-mode=&quot;mockup&quot;] .cta{
+    background: var(--accent-primary); border-color: var(--accent-primary);
+    color: #fff; box-shadow: var(--shadow);
+  }
+
+  .hero-visual{
+    aspect-ratio: 3/4; border-radius: var(--radius-active);
+    border: var(--border-w) var(--border-style) var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-mono); font-size: 12px; text-align:center; color: var(--text-dim);
+    background: var(--surface-2);
+  }
+  html[data-mode=&quot;mockup&quot;] .hero-visual{
+    background: linear-gradient(160deg, var(--accent-secondary), #0d7a70);
+    color: transparent;
+    box-shadow: var(--shadow);
+  }
+
+  /* FEATURES */
+  .features-wrap{
+    display:grid; grid-template-columns: 2fr 1fr; gap: var(--space-3);
+    align-items:start;
+  }
+  .feature-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2);
+  }
+  article{
+    border: var(--border-w) var(--border-style) var(--line);
+    border-radius: var(--radius-active);
+    padding: var(--space-2);
+    background: var(--surface);
+  }
+  html[data-mode=&quot;mockup&quot;] article{ box-shadow: var(--shadow); }
+  article h3{ font-family: var(--font-display); font-size: 16px; margin: var(--space-1) 0; }
+  article p{ font-size: 13px; color: var(--text-dim); line-height:1.5; margin:0; }
+  .icon-swatch{
+    width: 34px; height: 34px; border-radius: 8px;
+    border: var(--border-w) var(--border-style) var(--line);
+    margin-bottom: var(--space-1);
+  }
+  html[data-mode=&quot;mockup&quot;] .icon-swatch{ background: var(--accent-secondary); border: none; }
+
+  /* ASIDE */
+  aside{
+    border: var(--border-w) var(--border-style) var(--line);
+    border-radius: var(--radius-active);
+    padding: var(--space-3);
+    background: var(--surface-2);
+    font-size: 13px;
+  }
+  html[data-mode=&quot;mockup&quot;] aside{ background: var(--surface); box-shadow: var(--shadow); }
+  aside h4{ font-family: var(--font-display); margin: var(--space-1) 0; font-size: 15px; }
+  aside p{ color: var(--text-dim); line-height:1.5; }
+
+  /* FOOTER */
+  footer{
+    border-top: var(--border-w) var(--border-style) var(--line);
+    padding: var(--space-3);
+    text-align:center;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 720px){
+    .hero{ grid-template-columns: 1fr; }
+    .features-wrap{ grid-template-columns: 1fr; }
+    .feature-grid{ grid-template-columns: 1fr 1fr; }
+    nav{ flex-wrap: wrap; }
+    .nav-links{ order: 3; width:100%; justify-content:center; padding-top: var(--space-1); }
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+  &lt;nav&gt;
+    &lt;span class=&quot;tag-badge&quot;&gt;&amp;lt;header&amp;gt;&amp;lt;nav&amp;gt;&lt;/span&gt;
+    &lt;div class=&quot;logo&quot;&gt;TaskFlow&lt;/div&gt;
+    &lt;ul class=&quot;nav-links&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Features&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Pricing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;button id=&quot;fidelity-toggle&quot; type=&quot;button&quot; aria-pressed=&quot;false&quot;&gt;
+      FIDELITY: WIREFRAME
+    &lt;/button&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;span class=&quot;tag-badge&quot;&gt;&amp;lt;main&amp;gt;&lt;/span&gt;
+
+  &lt;section class=&quot;hero&quot;&gt;
+    &lt;span class=&quot;tag-badge&quot; style=&quot;display:block;&quot;&gt;&amp;lt;section class=&quot;hero&quot;&amp;gt;&lt;/span&gt;
+    &lt;div&gt;
+      &lt;h1&gt;Plan your day before you build your app.&lt;/h1&gt;
+      &lt;p&gt;TaskFlow turns scattered to-dos into a clear daily flow — the same discipline this page is demonstrating: structure first, style second.&lt;/p&gt;
+      &lt;a class=&quot;cta&quot; href=&quot;#&quot;&gt;Get Started Free&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;hero-visual&quot;&gt;[ APP SCREENSHOT PLACEHOLDER ]&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;span class=&quot;tag-badge&quot; style=&quot;display:block;&quot;&gt;&amp;lt;section class=&quot;features&quot;&amp;gt; + &amp;lt;aside&amp;gt;&lt;/span&gt;
+    &lt;div class=&quot;features-wrap&quot;&gt;
+      &lt;div class=&quot;feature-grid&quot;&gt;
+        &lt;article&gt;
+          &lt;span class=&quot;tag-badge&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
+          &lt;div class=&quot;icon-swatch&quot;&gt;&lt;/div&gt;
+          &lt;h3&gt;Smart Lists&lt;/h3&gt;
+          &lt;p&gt;Auto-sorted tasks by due date and priority, no manual triage required.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;span class=&quot;tag-badge&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
+          &lt;div class=&quot;icon-swatch&quot;&gt;&lt;/div&gt;
+          &lt;h3&gt;Team Sync&lt;/h3&gt;
+          &lt;p&gt;Shared boards update in real time across every teammate&#x27;s device.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;span class=&quot;tag-badge&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
+          &lt;div class=&quot;icon-swatch&quot;&gt;&lt;/div&gt;
+          &lt;h3&gt;Offline Mode&lt;/h3&gt;
+          &lt;p&gt;Keep working on the commute — everything syncs the moment you&#x27;re back online.&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+
+      &lt;aside&gt;
+        &lt;span class=&quot;tag-badge&quot;&gt;&amp;lt;aside&amp;gt;&lt;/span&gt;
+        &lt;h4&gt;Planning Tip&lt;/h4&gt;
+        &lt;p&gt;This exact layout stayed untouched while its fidelity changed. That&#x27;s the point: wireframes lock structure so mockups only have to solve style.&lt;/p&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;span class=&quot;tag-badge&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
+  &lt;p&gt;&amp;copy; 2026 TaskFlow — Built for BSIT MWD, Task 1 App Planning Demo.&lt;/p&gt;
+  &lt;p&gt;Prepared by Gimbert Ludovice — 2nd Year, WITMWD3M1 — Prof. John Kyle Martin&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;script&gt;
+  const html = document.documentElement;
+  const btn = document.getElementById(&#x27;fidelity-toggle&#x27;);
+
+  btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+    const isWireframe = html.getAttribute(&#x27;data-mode&#x27;) === &#x27;wireframe&#x27;;
+    const next = isWireframe ? &#x27;mockup&#x27; : &#x27;wireframe&#x27;;
+    html.setAttribute(&#x27;data-mode&#x27;, next);
+    btn.setAttribute(&#x27;aria-pressed&#x27;, String(!isWireframe));
+    btn.textContent = &#x27;FIDELITY: &#x27; + next.toUpperCase();
+  });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</div>
+
+<div class="task-panel" id="panel-task2">
+  <iframe class="task-frame" title="Task 2 — UI/UX and Material Design" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Task 2: UI/UX &amp; Material Design — Gimbert Ludovice&lt;/title&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&amp;family=Press+Start+2P&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+  :root {
+    --bg-void: #05050a;
+    --bg-panel: #0f0f18;
+    --bg-panel-2: #15151f;
+    --rog-red: #ff0044;
+    --electric-purple: #b026ff;
+    --cyber-cyan: #00eaff;
+    --text-primary: #eef1f8;
+    --text-secondary: #9aa1ba;
+    --text-muted: #666c85;
+    --line: rgba(255,255,255,0.08);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: &#x27;Rajdhani&#x27;, sans-serif;
+    background: var(--bg-void);
+    color: var(--text-primary);
+    line-height: 1.65;
+    position: relative;
+    overflow-x: hidden;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .snap-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+    padding: 48px 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @supports (justify-content: safe center) {
+    .snap-section { justify-content: safe center; }
+  }
+
+  /* ambient gaming backdrop */
+  body::before {
+    content: &quot;&quot;;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(255,0,68,0.14), transparent 42%),
+      radial-gradient(circle at 88% 82%, rgba(0,234,255,0.12), transparent 42%),
+      radial-gradient(circle at 60% 40%, rgba(176,38,255,0.08), transparent 50%);
+  }
+  body::after {
+    content: &quot;&quot;;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .page { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .scroll-hint {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-family: &#x27;Press Start 2P&#x27;, monospace; font-size: 8.5px; color: var(--cyber-cyan);
+    opacity: 0.75; letter-spacing: 1px; z-index: 5; animation: bounce-hint 1.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes bounce-hint { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
+  @media (prefers-reduced-motion: reduce) { .scroll-hint { animation: none; } }
+
+  h1, h2, h3 { font-family: &#x27;Orbitron&#x27;, sans-serif; letter-spacing: 0.5px; }
+
+  /* ---------- RGB sweep bar (Aura Sync signature) ---------- */
+  .rgb-bar {
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--rog-red), var(--electric-purple), var(--cyber-cyan), var(--rog-red));
+    background-size: 300% 100%;
+    animation: rgb-sweep 6s linear infinite;
+  }
+  @keyframes rgb-sweep { to { background-position: 300% 50%; } }
+
+  /* ---------- Cut-corner &quot;HUD panel&quot; system ---------- */
+  .hex-panel { --cut: 22px; padding: 2px; position: relative;
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+    background: linear-gradient(135deg, var(--rog-red), var(--electric-purple) 50%, var(--cyber-cyan));
+  }
+  .hex-panel.cyan-first { background: linear-gradient(135deg, var(--cyber-cyan), var(--electric-purple) 55%, var(--rog-red)); }
+  .hex-panel-inner {
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+    background: var(--bg-panel);
+    height: 100%;
+    width: 100%;
+  }
+
+  /* ---------- Header ---------- */
+  header.doc-header { --cut: 30px; margin-bottom: 34px; filter: drop-shadow(0 8px 30px rgba(255,0,68,0.18)) drop-shadow(0 0 30px rgba(0,234,255,0.10)); }
+  .doc-header-inner { padding: 34px 34px 30px; position: relative; overflow: hidden; }
+  .doc-header-inner::before {
+    content: &quot;&quot;; position: absolute; top: -50%; right: -10%; width: 60%; height: 220%;
+    background: linear-gradient(180deg, rgba(255,0,68,0.10), transparent 60%);
+    transform: rotate(18deg); pointer-events: none;
+  }
+
+  .points-badge {
+    position: absolute; top: 22px; right: 22px;
+    font-family: &#x27;Press Start 2P&#x27;, monospace;
+    font-size: 10px; color: var(--bg-void);
+    background: var(--cyber-cyan);
+    padding: 8px 12px;
+    box-shadow: 0 0 14px rgba(0,234,255,0.65);
+    z-index: 2;
+  }
+
+  .eyebrow {
+    font-family: &#x27;Press Start 2P&#x27;, monospace;
+    text-transform: uppercase; font-size: 9.5px; letter-spacing: 1.5px;
+    color: var(--electric-purple); margin: 0 0 14px; position: relative; z-index: 1;
+  }
+
+  .header-top-row { display: flex; align-items: center; gap: 16px; position: relative; z-index: 1; }
+
+  .pixel-icon { position: relative; width: 32px; height: 32px; flex-shrink: 0;
+    animation: pixel-glow 2.6s ease-in-out infinite; }
+  .pixel-icon::before {
+    content: &quot;&quot;; position: absolute; top: 0; left: 0; width: 4px; height: 4px; background: transparent;
+    box-shadow:
+      16px 0px 0 0 var(--rog-red), 12px 4px 0 0 var(--rog-red), 16px 4px 0 0 var(--rog-red),
+      8px 8px 0 0 var(--rog-red), 12px 8px 0 0 var(--rog-red), 16px 8px 0 0 var(--rog-red),
+      4px 12px 0 0 var(--electric-purple), 8px 12px 0 0 var(--electric-purple), 12px 12px 0 0 var(--electric-purple),
+      16px 12px 0 0 var(--electric-purple), 20px 12px 0 0 var(--electric-purple), 24px 12px 0 0 var(--electric-purple), 28px 12px 0 0 var(--electric-purple),
+      12px 16px 0 0 var(--cyber-cyan), 16px 16px 0 0 var(--cyber-cyan), 20px 16px 0 0 var(--cyber-cyan),
+      8px 20px 0 0 var(--cyber-cyan), 12px 20px 0 0 var(--cyber-cyan), 16px 20px 0 0 var(--cyber-cyan),
+      4px 24px 0 0 var(--cyber-cyan), 8px 24px 0 0 var(--cyber-cyan),
+      0px 28px 0 0 var(--cyber-cyan);
+  }
+  @keyframes pixel-glow {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(255,0,68,0.75)) drop-shadow(0 0 7px rgba(0,234,255,0.35)); }
+    50% { filter: drop-shadow(0 0 7px rgba(176,38,255,0.9)) drop-shadow(0 0 13px rgba(0,234,255,0.6)); }
+  }
+
+  .student-name {
+    font-size: clamp(26px, 4vw, 36px); font-weight: 900; margin: 0 0 2px; text-transform: uppercase;
+    background: linear-gradient(90deg, #ffffff, var(--cyber-cyan) 60%, var(--electric-purple));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .task-title { font-weight: 500; font-size: 16px; margin: 4px 0 24px; color: var(--text-secondary); position: relative; z-index: 1; }
+
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; position: relative; z-index: 1; }
+  .meta-item { background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-left: 3px solid var(--cyber-cyan); padding: 10px 14px; }
+  .meta-label { font-family: &#x27;Press Start 2P&#x27;, monospace; font-size: 8.5px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); display: block; margin-bottom: 6px; }
+  .meta-value { font-size: 15.5px; font-weight: 600; color: var(--text-primary); }
+
+  /* ---------- Section framing ---------- */
+  section { margin-bottom: 0; }
+  .snap-section &gt; .section-heading:first-child,
+  .snap-section &gt; .section-intro:first-of-type { margin-top: 0; }
+  .section-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 0; }
+  .section-number {
+    font-family: &#x27;Press Start 2P&#x27;, monospace; font-size: 11px; color: var(--bg-void);
+    background: var(--rog-red); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; box-shadow: 0 0 10px rgba(255,0,68,0.6);
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+  }
+  h2 { font-size: 21px; font-weight: 700; margin: 0; color: var(--text-primary); text-transform: uppercase; }
+  .section-intro { color: var(--text-secondary); font-size: 15px; margin: 0; max-width: 720px; }
+
+  /* ---------- UI vs UX comparison grid ---------- */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .compare-card { --cut: 18px; transition: filter 0.25s ease, transform 0.25s ease; cursor: pointer; }
+  .compare-card:hover { transform: translateY(-4px); filter: drop-shadow(0 10px 24px rgba(255,0,68,0.28)); }
+  .compare-card.ux:hover { filter: drop-shadow(0 10px 24px rgba(0,234,255,0.28)); }
+  .compare-card .hex-panel-inner { padding: 24px; overflow: hidden; position: relative; }
+
+  .compare-icon {
+    width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+    font-family: &#x27;Orbitron&#x27;, sans-serif; font-size: 15px; font-weight: 700; color: #05050a;
+    background: var(--rog-red); margin-bottom: 14px;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    box-shadow: 0 0 16px rgba(255,0,68,0.55);
+  }
+  .compare-card.ux .compare-icon { background: var(--cyber-cyan); box-shadow: 0 0 16px rgba(0,234,255,0.55); }
+
+  .compare-card h3 { margin: 0 0 4px; font-size: 18px; color: var(--text-primary); }
+  .compare-card .subtitle { font-size: 11.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin: 0 0 14px; font-family: &#x27;Rajdhani&#x27;, sans-serif; }
+  .compare-card p { font-size: 14.5px; margin: 0 0 14px; color: var(--text-secondary); }
+  .compare-card ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--text-secondary); }
+  .compare-card li { margin-bottom: 6px; }
+  .compare-card li::marker { color: var(--rog-red); }
+  .compare-card.ux li::marker { color: var(--cyber-cyan); }
+
+  .divider-callout {
+    --cut: 10px;
+  }
+  .divider-callout .hex-panel-inner { padding: 14px 18px; font-size: 14.5px; color: var(--text-secondary); }
+  .divider-callout strong { color: var(--cyber-cyan); }
+
+  /* ---------- Material Design breakdown ---------- */
+  .md-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .md-card { --cut: 18px; cursor: pointer; transition: filter 0.25s ease; }
+  .md-card:hover { filter: drop-shadow(0 8px 22px rgba(176,38,255,0.32)); }
+  .md-card-head {
+    padding: 16px 20px; font-family: &#x27;Orbitron&#x27;, sans-serif; color: #05050a; font-weight: 700; font-size: 13.5px;
+    display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .md-card.visual .md-card-head { background: var(--rog-red); }
+  .md-card.interaction .md-card-head { background: var(--cyber-cyan); }
+  .md-card-body { padding: 18px 22px 22px; }
+
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .chip {
+    font-family: &#x27;Press Start 2P&#x27;, monospace; font-size: 8px; letter-spacing: 0.5px;
+    background: rgba(255,0,68,0.14); color: var(--rog-red); border: 1px solid rgba(255,0,68,0.4);
+    padding: 6px 10px;
+  }
+  .md-card.interaction .chip { background: rgba(0,234,255,0.12); color: var(--cyber-cyan); border-color: rgba(0,234,255,0.4); }
+  .md-card-body p { font-size: 14.5px; color: var(--text-secondary); margin: 0; }
+
+  /* ---------- Synthesis ---------- */
+  .synthesis { --cut: 20px; }
+  .synthesis .hex-panel-inner { padding: 26px 28px; }
+  .synthesis p { margin: 0; font-size: 15px; color: var(--text-secondary); }
+  .synthesis p + p { margin-top: 12px; }
+  .synthesis strong { color: var(--text-primary); }
+
+  /* ---------- Ripple ---------- */
+  .ripple-wrap { position: relative; overflow: hidden; }
+  .ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple-anim 650ms ease-out; background: rgba(0,234,255,0.30); pointer-events: none; }
+  .compare-card .ripple { background: rgba(255,0,68,0.30); }
+  .compare-card.ux .ripple { background: rgba(0,234,255,0.30); }
+  .md-card .ripple { background: rgba(176,38,255,0.30); }
+  @keyframes ripple-anim { to { transform: scale(3.4); opacity: 0; } }
+
+  .hint { text-align: center; font-size: 12px; color: var(--text-muted); margin: -8px 0 0; font-style: italic; }
+
+  /* ---------- Footer ---------- */
+  footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--text-muted); text-align: center; font-family: &#x27;Rajdhani&#x27;, sans-serif; letter-spacing: 0.5px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .compare-grid, .md-columns { grid-template-columns: 1fr; gap: 16px; }
+    .page { padding: 0 4px; }
+  }
+
+  @media (max-width: 720px) {
+    .doc-header-inner { padding: 26px 20px 22px; }
+    .points-badge { position: static; display: inline-block; margin-bottom: 14px; }
+    header.doc-header { --cut: 18px; }
+    .snap-section { padding: 56px 16px; }
+    body { scroll-snap-type: y proximity; }
+    .student-name { font-size: clamp(22px, 7vw, 30px); }
+    .meta-grid { gap: 10px; }
+    .compare-card .hex-panel-inner { padding: 18px; }
+    .md-card-body { padding: 14px 16px 18px; }
+    h2 { font-size: 18px; }
+    .section-intro { font-size: 14px; margin: 10px 0 18px; }
+  }
+
+  @media (max-width: 420px) {
+    .snap-section { padding: 44px 12px; }
+    .doc-header-inner { padding: 22px 16px 18px; }
+    .eyebrow { font-size: 8px; }
+    .points-badge { font-size: 8.5px; padding: 6px 10px; }
+    .meta-value { font-size: 14px; }
+    .compare-icon { width: 36px; height: 36px; font-size: 13px; }
+  }
+
+  @media (max-height: 700px) and (min-width: 721px) {
+    .snap-section { padding: 32px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ripple { animation: none; display: none; }
+    .rgb-bar, .pixel-icon { animation: none; }
+    .compare-card, .md-card { transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  :focus-visible { outline: 3px solid var(--cyber-cyan); outline-offset: 2px; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;page&quot;&gt;
+
+&lt;section class=&quot;snap-section&quot; id=&quot;panel-header&quot;&gt;
+  &lt;div class=&quot;rgb-bar&quot;&gt;&lt;/div&gt;
+
+  &lt;header class=&quot;doc-header hex-panel&quot;&gt;
+    &lt;div class=&quot;hex-panel-inner doc-header-inner&quot;&gt;
+      &lt;span class=&quot;points-badge&quot;&gt;10 PTS&lt;/span&gt;
+      &lt;p class=&quot;eyebrow&quot;&gt;// BSIT — Mobile &amp;amp; Web Development&lt;/p&gt;
+      &lt;div class=&quot;header-top-row&quot;&gt;
+        &lt;div class=&quot;pixel-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;
+          &lt;h1 class=&quot;student-name&quot;&gt;Gimbert Ludovice&lt;/h1&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;task-title&quot;&gt;Task 2 — UI/UX &amp;amp; Material Design&lt;/p&gt;
+      &lt;div class=&quot;meta-grid&quot;&gt;
+        &lt;div class=&quot;meta-item&quot;&gt;
+          &lt;span class=&quot;meta-label&quot;&gt;Year &amp;amp; Section&lt;/span&gt;
+          &lt;span class=&quot;meta-value&quot;&gt;2nd Year — WITMWD3M1&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;meta-item&quot;&gt;
+          &lt;span class=&quot;meta-label&quot;&gt;Degree Program&lt;/span&gt;
+          &lt;span class=&quot;meta-value&quot;&gt;BSIT Mobile &amp;amp; Web Dev&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;meta-item&quot;&gt;
+          &lt;span class=&quot;meta-label&quot;&gt;Professor&lt;/span&gt;
+          &lt;span class=&quot;meta-value&quot;&gt;John Kyle Martin&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;meta-item&quot;&gt;
+          &lt;span class=&quot;meta-label&quot;&gt;Submission&lt;/span&gt;
+          &lt;span class=&quot;meta-value&quot;&gt;Written Discussion&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+&lt;/section&gt;
+
+  &lt;main&gt;
+
+    &lt;section class=&quot;snap-section&quot; id=&quot;ui-vs-ux&quot;&gt;
+      &lt;div class=&quot;section-heading&quot;&gt;
+        &lt;span class=&quot;section-number&quot;&gt;1&lt;/span&gt;
+        &lt;h2&gt;Understanding UI vs. UX&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;section-intro&quot;&gt;
+        Although the two terms are often used interchangeably, User Interface (UI) and User
+        Experience (UX) describe two different layers of a digital product — one is about
+        &lt;em&gt;what the user perceives&lt;/em&gt;, and the other is about &lt;em&gt;what the user feels&lt;/em&gt;.
+      &lt;/p&gt;
+
+      &lt;article class=&quot;compare-grid&quot;&gt;
+        &lt;div class=&quot;compare-card hex-panel ripple-wrap&quot;&gt;
+          &lt;div class=&quot;hex-panel-inner&quot;&gt;
+            &lt;div class=&quot;compare-icon&quot;&gt;UI&lt;/div&gt;
+            &lt;h3&gt;User Interface&lt;/h3&gt;
+            &lt;p class=&quot;subtitle&quot;&gt;The surface the user sees and touches&lt;/p&gt;
+            &lt;p&gt;
+              UI is the visual and tactile layer of an application — the buttons, colors,
+              layout, icons, and typography a user directly interacts with on screen.
+            &lt;/p&gt;
+            &lt;ul&gt;
+              &lt;li&gt;Visual appearance and branding&lt;/li&gt;
+              &lt;li&gt;Layout, spacing, and typography&lt;/li&gt;
+              &lt;li&gt;Buttons, icons, and controls&lt;/li&gt;
+              &lt;li&gt;Color systems and imagery&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;compare-card ux hex-panel cyan-first ripple-wrap&quot;&gt;
+          &lt;div class=&quot;hex-panel-inner&quot;&gt;
+            &lt;div class=&quot;compare-icon&quot;&gt;UX&lt;/div&gt;
+            &lt;h3&gt;User Experience&lt;/h3&gt;
+            &lt;p class=&quot;subtitle&quot;&gt;How the user feels while using it&lt;/p&gt;
+            &lt;p&gt;
+              UX is the overall feeling and outcome of using an app — whether tasks are
+              intuitive, fast to complete, and free of friction or confusion.
+            &lt;/p&gt;
+            &lt;ul&gt;
+              &lt;li&gt;Ease of navigation and task flow&lt;/li&gt;
+              &lt;li&gt;Speed and responsiveness of feedback&lt;/li&gt;
+              &lt;li&gt;How intuitive an action feels&lt;/li&gt;
+              &lt;li&gt;Overall satisfaction and trust&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+
+      &lt;div class=&quot;divider-callout hex-panel&quot;&gt;
+        &lt;div class=&quot;hex-panel-inner&quot;&gt;
+          &lt;strong&gt;The key distinction:&lt;/strong&gt; a screen can look great — a strong UI — but
+          still be confusing to navigate, which is poor UX. Good design requires both:
+          an interface that looks polished &lt;em&gt;and&lt;/em&gt; an experience that feels effortless.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;snap-section&quot; id=&quot;material-design&quot;&gt;
+      &lt;div class=&quot;section-heading&quot;&gt;
+        &lt;span class=&quot;section-number&quot;&gt;2&lt;/span&gt;
+        &lt;h2&gt;Material Design: Bridging UI and UX&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;section-intro&quot;&gt;
+        Material Design is Google&#x27;s design system for Android, and it strengthens both
+        sides of this equation at once. It gives developers pre-tested visual guidelines
+        that make interfaces consistent and polished (elevating the UI), while its
+        interaction patterns make the app easier and more satisfying to actually use
+        (elevating the UX).
+      &lt;/p&gt;
+
+      &lt;div class=&quot;md-columns&quot;&gt;
+        &lt;div class=&quot;md-card visual hex-panel ripple-wrap&quot;&gt;
+          &lt;div class=&quot;hex-panel-inner&quot;&gt;
+            &lt;div class=&quot;md-card-head&quot;&gt;Elevating the UI&lt;/div&gt;
+            &lt;div class=&quot;md-card-body&quot;&gt;
+              &lt;div class=&quot;chip-row&quot;&gt;
+                &lt;span class=&quot;chip&quot;&gt;SPACING&lt;/span&gt;
+                &lt;span class=&quot;chip&quot;&gt;ELEVATION&lt;/span&gt;
+                &lt;span class=&quot;chip&quot;&gt;COLOR SYS&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;p&gt;
+                Material Design supplies a shared visual language — an 8dp spacing grid,
+                layered elevation with consistent shadows, and a structured color and
+                typography system. Developers don&#x27;t have to invent these rules from
+                scratch; they simply apply pre-tested guidelines, which keeps every
+                screen in the app looking consistent and professionally polished.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;md-card interaction hex-panel cyan-first ripple-wrap&quot;&gt;
+          &lt;div class=&quot;hex-panel-inner&quot;&gt;
+            &lt;div class=&quot;md-card-head&quot;&gt;Elevating the UX&lt;/div&gt;
+            &lt;div class=&quot;md-card-body&quot;&gt;
+              &lt;div class=&quot;chip-row&quot;&gt;
+                &lt;span class=&quot;chip&quot;&gt;RIPPLE FX&lt;/span&gt;
+                &lt;span class=&quot;chip&quot;&gt;NAV FLOW&lt;/span&gt;
+                &lt;span class=&quot;chip&quot;&gt;HIERARCHY&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;p&gt;
+                Beyond visuals, Material Design defines interaction patterns: predictable
+                navigation structures (like the app bar and bottom navigation), instant
+                feedback such as the ripple effect on taps, and a clear hierarchy that
+                tells the user what to focus on next. These patterns reduce hesitation
+                and confusion, making the app faster and more satisfying to use.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;hint&quot;&gt;Tap the cards above — that spreading glow IS the ripple effect being discussed.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;snap-section&quot; id=&quot;synthesis&quot;&gt;
+      &lt;div class=&quot;section-heading&quot;&gt;
+        &lt;span class=&quot;section-number&quot;&gt;3&lt;/span&gt;
+        &lt;h2&gt;Synthesis&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;synthesis hex-panel&quot;&gt;
+        &lt;div class=&quot;hex-panel-inner&quot;&gt;
+          &lt;p&gt;
+            UI and UX are not competing concerns — they are two dimensions of the same
+            product. &lt;strong&gt;UI shapes what a user perceives&lt;/strong&gt;; &lt;strong&gt;UX shapes
+            what a user accomplishes&lt;/strong&gt; and how that process feels.
+          &lt;/p&gt;
+          &lt;p&gt;
+            Material Design matters precisely because it does not treat these dimensions
+            separately. Its visual guidelines give developers a fast, consistent path to
+            good UI, while its interaction patterns bake good UX directly into the
+            components themselves — meaning a developer who simply follows the system is,
+            by default, building an app that both looks good and works well.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;footer&gt;
+        Submitted by Gimbert Ludovice · 2nd Year WITMWD3M1 · BSIT Mobile &amp;amp; Web Development · Prof. John Kyle Martin
+      &lt;/footer&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;scroll-hint&quot;&gt;↓ SCROLL ↓&lt;/div&gt;
+
+&lt;script&gt;
+  document.querySelectorAll(&#x27;.ripple-wrap&#x27;).forEach(function (el) {
+    el.addEventListener(&#x27;click&#x27;, function (e) {
+      var rect = el.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      var ripple = document.createElement(&#x27;span&#x27;);
+      ripple.className = &#x27;ripple&#x27;;
+      ripple.style.width = ripple.style.height = size + &#x27;px&#x27;;
+      ripple.style.left = (e.clientX - rect.left - size / 2) + &#x27;px&#x27;;
+      ripple.style.top = (e.clientY - rect.top - size / 2) + &#x27;px&#x27;;
+      el.appendChild(ripple);
+      setTimeout(function () { ripple.remove(); }, 700);
+    });
+  });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</div>
+
+<div class="task-panel" id="panel-task4">
+  <iframe class="task-frame" title="Task 4 — Kotlin Fundamentals" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Kotlin Fundamentals — Task 4 | Gimbert Ludovice&lt;/title&gt;
+&lt;style&gt;
+  :root{
+    --bg-0:#07080d;
+    --bg-1:#0d0f18;
+    --bg-2:#12141f;
+    --panel:#151827;
+    --panel-2:#1a1d2e;
+    --border:#262a40;
+    --border-glow:#ff003c;
+    --rog-red:#ff003c;
+    --rog-red-2:#ff4d6d;
+    --cyan:#00e5ff;
+    --purple:#7b2fff;
+    --text-0:#f2f3f8;
+    --text-1:#b8bcd0;
+    --text-2:#7c8099;
+    --mono: &#x27;Consolas&#x27;, &#x27;SFMono-Regular&#x27;, &#x27;Fira Code&#x27;, monospace;
+    --sans: &#x27;Segoe UI&#x27;, &#x27;Inter&#x27;, system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255,0,60,0.10), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(0,229,255,0.08), transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(123,47,255,0.10), transparent 50%),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1) 40%, var(--bg-0));
+    color:var(--text-0);
+    font-family:var(--sans);
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* subtle animated hex/circuit backdrop */
+  body::before{
+    content:&quot;&quot;;
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,0,60,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,0,60,0.035) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(circle at 50% 30%, black 0%, transparent 75%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .scanline{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--cyan), var(--rog-red), transparent);
+    opacity:0.6;
+    animation:scan 6s linear infinite;
+    z-index:1;
+    pointer-events:none;
+  }
+  @keyframes scan{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(100vh);}
+  }
+
+  .wrap{
+    position:relative;
+    z-index:2;
+    max-width:1100px;
+    margin:0 auto;
+    padding:28px 20px 60px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header.hero{
+    position:relative;
+    background:linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:34px 30px;
+    overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.02), 0 20px 60px -20px rgba(255,0,60,0.25);
+  }
+  header.hero::before{
+    content:&quot;&quot;;
+    position:absolute;
+    top:-40%; left:-10%;
+    width:60%; height:200%;
+    background:linear-gradient(120deg, transparent, rgba(255,0,60,0.12), transparent);
+    transform:rotate(12deg);
+    animation:sheen 5s ease-in-out infinite;
+  }
+  @keyframes sheen{
+    0%,100%{transform:translateX(0) rotate(12deg);}
+    50%{transform:translateX(120%) rotate(12deg);}
+  }
+  header.hero::after{
+    content:&quot;&quot;;
+    position:absolute;
+    right:-60px; top:-60px;
+    width:220px; height:220px;
+    background:conic-gradient(from 0deg, var(--rog-red), var(--purple), var(--cyan), var(--rog-red));
+    filter:blur(60px);
+    opacity:0.35;
+    border-radius:50%;
+    animation:spin 12s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+
+  .brand-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:22px;
+    position:relative;
+    z-index:1;
+  }
+  .rog-mark{
+    width:46px;height:46px;
+    display:grid;place-items:center;
+    background:linear-gradient(145deg, var(--rog-red), #7a0018);
+    border-radius:10px;
+    box-shadow:0 0 22px rgba(255,0,60,0.55);
+    font-weight:900;
+    font-size:20px;
+    letter-spacing:-1px;
+  }
+  .brand-text{
+    font-size:12px;
+    letter-spacing:4px;
+    color:var(--text-2);
+    text-transform:uppercase;
+  }
+  .brand-text b{ color:var(--rog-red-2); letter-spacing:3px; }
+
+  h1.title{
+    margin:0 0 6px;
+    font-size:clamp(24px, 4vw, 34px);
+    font-weight:800;
+    letter-spacing:0.5px;
+    background:linear-gradient(90deg, #fff, var(--rog-red-2) 60%, var(--cyan));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    position:relative;
+    z-index:1;
+  }
+  .subtitle{
+    color:var(--text-1);
+    font-size:14px;
+    margin-bottom:22px;
+    position:relative;
+    z-index:1;
+  }
+
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:14px;
+    position:relative;
+    z-index:1;
+  }
+  .info-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    border-left:3px solid var(--rog-red);
+    border-radius:10px;
+    padding:14px 16px;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .info-card:hover{
+    transform:translateY(-3px);
+    border-left-color:var(--cyan);
+  }
+  .info-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--text-2);
+    margin-bottom:4px;
+  }
+  .info-value{
+    font-size:16px;
+    font-weight:600;
+    color:var(--text-0);
+  }
+
+  /* ---------- MAIN LAYOUT ---------- */
+  main{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+  }
+
+  section.card{
+    background:linear-gradient(180deg, var(--panel), var(--bg-2));
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:26px;
+    position:relative;
+    box-shadow:0 10px 40px -18px rgba(0,0,0,0.6);
+  }
+  section.card::before{
+    content:&quot;&quot;;
+    position:absolute;
+    top:0;left:20px;right:20px;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--rog-red), transparent);
+  }
+
+  .section-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .section-num{
+    font-family:var(--mono);
+    font-weight:800;
+    font-size:13px;
+    color:var(--bg-0);
+    background:linear-gradient(135deg, var(--cyan), var(--purple));
+    width:30px;height:30px;
+    border-radius:8px;
+    display:grid;place-items:center;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:19px;
+    color:var(--text-0);
+  }
+  .points-tag{
+    margin-left:auto;
+    font-size:11px;
+    letter-spacing:1px;
+    padding:5px 12px;
+    border:1px solid var(--rog-red);
+    color:var(--rog-red-2);
+    border-radius:999px;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+
+  article.concept{
+    background:rgba(255,255,255,0.025);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  article.concept:last-child{margin-bottom:0;}
+  article.concept h3{
+    margin:0 0 10px;
+    font-size:15px;
+    color:var(--cyan);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  article.concept h3::before{
+    content:&quot;//&quot;;
+    color:var(--rog-red);
+    font-family:var(--mono);
+  }
+  article.concept p{
+    color:var(--text-1);
+    line-height:1.7;
+    font-size:14.5px;
+    margin:0 0 10px;
+  }
+  article.concept p:last-child{margin-bottom:0;}
+  .kw{
+    font-family:var(--mono);
+    background:rgba(255,0,60,0.12);
+    color:var(--rog-red-2);
+    padding:1px 7px;
+    border-radius:5px;
+    font-size:13.5px;
+    border:1px solid rgba(255,0,60,0.3);
+  }
+
+  pre.code-block{
+    background:#0a0b12;
+    border:1px solid var(--border);
+    border-left:3px solid var(--cyan);
+    border-radius:10px;
+    padding:16px 18px;
+    overflow-x:auto;
+    font-family:var(--mono);
+    font-size:13.5px;
+    line-height:1.65;
+    color:#d6d9f0;
+    margin:12px 0;
+  }
+  pre.code-block .c-kw{color:#ff6b9d;}
+  pre.code-block .c-str{color:#9cffb0;}
+  pre.code-block .c-fn{color:#7fd8ff;}
+  pre.code-block .c-cm{color:#5c6180;font-style:italic;}
+  pre.code-block .c-var{color:#ffd479;}
+
+  .logic-note{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    background:rgba(0,229,255,0.06);
+    border:1px dashed rgba(0,229,255,0.35);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:13.5px;
+    color:var(--text-1);
+  }
+  .logic-note span.ico{
+    color:var(--cyan);
+    font-weight:800;
+    font-family:var(--mono);
+  }
+
+  /* ---------- DEMO ---------- */
+  .demo-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:22px;
+  }
+  @media (max-width:760px){
+    .demo-grid{grid-template-columns:1fr;}
+  }
+
+  .login-box{
+    background:radial-gradient(circle at top left, rgba(255,0,60,0.08), transparent 60%), var(--bg-2);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px;
+    position:relative;
+  }
+  .login-box h3{
+    margin:0 0 4px;
+    font-size:15px;
+    color:var(--text-0);
+  }
+  .login-sub{
+    font-size:12.5px;
+    color:var(--text-2);
+    margin-bottom:18px;
+  }
+
+  label.field-label{
+    display:block;
+    font-size:12px;
+    color:var(--text-2);
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  .field{
+    margin-bottom:14px;
+  }
+  input.field-input{
+    width:100%;
+    background:#0c0e17;
+    border:1px solid var(--border);
+    color:var(--text-0);
+    padding:11px 14px;
+    border-radius:9px;
+    font-size:14px;
+    font-family:var(--mono);
+    outline:none;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  input.field-input:focus{
+    border-color:var(--cyan);
+    box-shadow:0 0 0 3px rgba(0,229,255,0.15);
+  }
+  .hint{
+    font-size:11.5px;
+    color:var(--text-2);
+    margin-top:6px;
+  }
+
+  button.btn-login{
+    width:100%;
+    padding:12px 16px;
+    border:none;
+    border-radius:9px;
+    background:linear-gradient(135deg, var(--rog-red), #a4001f);
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.5px;
+    cursor:pointer;
+    box-shadow:0 8px 24px -8px rgba(255,0,60,0.6);
+    transition:transform .12s ease, box-shadow .12s ease;
+    text-transform:uppercase;
+  }
+  button.btn-login:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px -8px rgba(255,0,60,0.75);
+  }
+  button.btn-login:active{ transform:translateY(0); }
+
+  button.btn-reset{
+    width:100%;
+    margin-top:10px;
+    padding:10px 16px;
+    border-radius:9px;
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text-1);
+    font-size:13px;
+    cursor:pointer;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  button.btn-reset:hover{
+    border-color:var(--cyan);
+    color:var(--cyan);
+  }
+
+  #statusMsg{
+    margin-top:14px;
+    padding:11px 14px;
+    border-radius:9px;
+    font-size:13.5px;
+    font-weight:600;
+    display:none;
+    animation:pop .25s ease;
+  }
+  @keyframes pop{ from{opacity:0; transform:scale(.96);} to{opacity:1; transform:scale(1);} }
+  #statusMsg.ok{
+    display:block;
+    background:rgba(45,255,140,0.1);
+    border:1px solid rgba(45,255,140,0.4);
+    color:#7dffb8;
+  }
+  #statusMsg.err{
+    display:block;
+    background:rgba(255,0,60,0.1);
+    border:1px solid rgba(255,0,60,0.4);
+    color:var(--rog-red-2);
+  }
+  #statusMsg.lock{
+    display:block;
+    background:rgba(255,180,0,0.1);
+    border:1px solid rgba(255,180,0,0.4);
+    color:#ffce5c;
+  }
+
+  /* right column: state visualizer */
+  .state-box{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .state-box h3{
+    margin:0;
+    font-size:15px;
+    color:var(--text-0);
+  }
+  .state-sub{
+    font-size:12.5px;
+    color:var(--text-2);
+    margin-top:-10px;
+  }
+
+  .counter-panel{
+    background:#0a0b12;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .counter-panel .var-tag{
+    position:absolute;
+    top:10px; left:12px;
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--cyan);
+    letter-spacing:1px;
+  }
+  #attemptCount{
+    font-family:var(--mono);
+    font-size:52px;
+    font-weight:800;
+    color:var(--rog-red-2);
+    text-shadow:0 0 18px rgba(255,0,60,0.55);
+    line-height:1;
+    display:block;
+    transition:transform .15s ease;
+  }
+  #attemptCount.bump{ transform:scale(1.18); }
+  .counter-label{
+    margin-top:8px;
+    font-size:12px;
+    color:var(--text-2);
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+
+  .val-vs-var{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .vv-card{
+    border-radius:10px;
+    padding:12px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,0.025);
+    font-size:12.5px;
+  }
+  .vv-card .vv-h{
+    font-family:var(--mono);
+    font-weight:800;
+    font-size:13px;
+    margin-bottom:4px;
+  }
+  .vv-card.val .vv-h{ color:#7dffb8; }
+  .vv-card.var .vv-h{ color:var(--rog-red-2); }
+  .vv-card p{ margin:0; color:var(--text-2); line-height:1.5; }
+  .vv-card .status-dot{
+    display:inline-block;
+    width:7px;height:7px;
+    border-radius:50%;
+    margin-right:6px;
+  }
+  .val .status-dot{ background:#7dffb8; }
+  .var .status-dot{ background:var(--rog-red-2); animation:pulse 1.2s infinite; }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.35;}
+  }
+
+  .live-log{
+    background:#0a0b12;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px 14px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-2);
+    max-height:130px;
+    overflow-y:auto;
+  }
+  .live-log .log-line{
+    padding:2px 0;
+    border-bottom:1px dashed rgba(255,255,255,0.05);
+  }
+  .live-log .log-line:last-child{ border-bottom:none; }
+  .log-line.g{ color:#7dffb8; }
+  .log-line.r{ color:var(--rog-red-2); }
+  .log-line.y{ color:#ffce5c; }
+
+  footer{
+    text-align:center;
+    margin-top:34px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+    color:var(--text-2);
+    font-size:12px;
+    letter-spacing:1px;
+  }
+  footer b{ color:var(--rog-red-2); }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;scanline&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+  &lt;header class=&quot;hero&quot;&gt;
+    &lt;div class=&quot;brand-row&quot;&gt;
+      &lt;div class=&quot;rog-mark&quot;&gt;R&lt;/div&gt;
+      &lt;div class=&quot;brand-text&quot;&gt;&lt;b&gt;REPUBLIC OF GAMERS&lt;/b&gt; // DEV LAB — TASK SUBMISSION&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h1 class=&quot;title&quot;&gt;Kotlin Fundamentals — Task 4&lt;/h1&gt;
+    &lt;div class=&quot;subtitle&quot;&gt;Interactive assignment dashboard · val vs var · conditional logic in Android&lt;/div&gt;
+
+    &lt;div class=&quot;info-grid&quot;&gt;
+      &lt;div class=&quot;info-card&quot;&gt;
+        &lt;div class=&quot;info-label&quot;&gt;Student&lt;/div&gt;
+        &lt;div class=&quot;info-value&quot;&gt;Gimbert Ludovice&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;info-card&quot;&gt;
+        &lt;div class=&quot;info-label&quot;&gt;Year &amp;amp; Section&lt;/div&gt;
+        &lt;div class=&quot;info-value&quot;&gt;2nd Year — WITMWD3M1&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;info-card&quot;&gt;
+        &lt;div class=&quot;info-label&quot;&gt;Degree Program&lt;/div&gt;
+        &lt;div class=&quot;info-value&quot;&gt;BSIT — Mobile &amp;amp; Web Development&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;info-card&quot;&gt;
+        &lt;div class=&quot;info-label&quot;&gt;Professor&lt;/div&gt;
+        &lt;div class=&quot;info-value&quot;&gt;John Kyle Martin&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+
+    &lt;!-- CONCEPT SECTION --&gt;
+    &lt;section class=&quot;card&quot;&gt;
+      &lt;div class=&quot;section-head&quot;&gt;
+        &lt;div class=&quot;section-num&quot;&gt;01&lt;/div&gt;
+        &lt;h2&gt;Kotlin Fundamentals — Core Concepts&lt;/h2&gt;
+        &lt;div class=&quot;points-tag&quot;&gt;10 pts&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;article class=&quot;concept&quot;&gt;
+        &lt;h3&gt;Concept 1: &lt;span class=&quot;kw&quot;&gt;val&lt;/span&gt; vs &lt;span class=&quot;kw&quot;&gt;var&lt;/span&gt;&lt;/h3&gt;
+        &lt;p&gt;
+          &lt;span class=&quot;kw&quot;&gt;val&lt;/span&gt; declares a &lt;strong&gt;read-only reference&lt;/strong&gt; — once a value is assigned,
+          it cannot be reassigned to something else. It&#x27;s Kotlin&#x27;s way of enforcing immutability wherever a value
+          shouldn&#x27;t change during the program&#x27;s lifetime.
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;span class=&quot;kw&quot;&gt;var&lt;/span&gt; declares a &lt;strong&gt;mutable variable&lt;/strong&gt; that can be reassigned as the
+          program runs. This is what you reach for when a value is expected to change in response to events —
+          like a counter, a score, or a login attempt tally.
+        &lt;/p&gt;
+        &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-kw&quot;&gt;val&lt;/span&gt; maxAttempts = &lt;span class=&quot;c-str&quot;&gt;3&lt;/span&gt;      &lt;span class=&quot;c-cm&quot;&gt;// fixed — never changes&lt;/span&gt;
+&lt;span class=&quot;c-kw&quot;&gt;var&lt;/span&gt; attemptCount = &lt;span class=&quot;c-str&quot;&gt;0&lt;/span&gt;      &lt;span class=&quot;c-cm&quot;&gt;// mutable — updates over time&lt;/span&gt;&lt;/pre&gt;
+      &lt;/article&gt;
+
+      &lt;article class=&quot;concept&quot;&gt;
+        &lt;h3&gt;Concept 2: Conditional Logic in an Android Login Screen&lt;/h3&gt;
+        &lt;p&gt;
+          In a login screen, you&#x27;d use a &lt;span class=&quot;kw&quot;&gt;var&lt;/span&gt; for &lt;code&gt;attemptCount&lt;/code&gt; — since it needs
+          to increment every time a login fails — paired with an &lt;span class=&quot;kw&quot;&gt;if/else&lt;/span&gt; statement to decide
+          the outcome:
+        &lt;/p&gt;
+        &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-kw&quot;&gt;if&lt;/span&gt; (password == storedPassword) {
+    &lt;span class=&quot;c-fn&quot;&gt;grantAccess&lt;/span&gt;()
+} &lt;span class=&quot;c-kw&quot;&gt;else&lt;/span&gt; {
+    &lt;span class=&quot;c-var&quot;&gt;attemptCount&lt;/span&gt;++
+    &lt;span class=&quot;c-fn&quot;&gt;showError&lt;/span&gt;()
+}&lt;/pre&gt;
+        &lt;div class=&quot;logic-note&quot;&gt;
+          &lt;span class=&quot;ico&quot;&gt;&amp;gt;_&lt;/span&gt;
+          &lt;span&gt;The conditional statement is what lets the app decide the outcome based on changing input —
+          creating the necessary branching logic that separates &quot;correct password&quot; from &quot;wrong password&quot; paths.&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+
+    &lt;!-- LIVE DEMO --&gt;
+    &lt;section class=&quot;card&quot;&gt;
+      &lt;div class=&quot;section-head&quot;&gt;
+        &lt;div class=&quot;section-num&quot;&gt;02&lt;/div&gt;
+        &lt;h2&gt;Kotlin Live Demo — Login Simulator&lt;/h2&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;demo-grid&quot;&gt;
+
+        &lt;!-- Login box --&gt;
+        &lt;div class=&quot;login-box&quot;&gt;
+          &lt;h3&gt;🔐 Simulated Login&lt;/h3&gt;
+          &lt;div class=&quot;login-sub&quot;&gt;Correct password is &lt;code class=&quot;kw&quot;&gt;&quot;rog2026&quot;&lt;/code&gt; — try wrong ones first to trigger the &lt;span class=&quot;kw&quot;&gt;else&lt;/span&gt; branch.&lt;/div&gt;
+
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label class=&quot;field-label&quot;&gt;USERNAME&lt;/label&gt;
+            &lt;input class=&quot;field-input&quot; id=&quot;username&quot; type=&quot;text&quot; value=&quot;gimbert.ludovice&quot; spellcheck=&quot;false&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label class=&quot;field-label&quot;&gt;PASSWORD&lt;/label&gt;
+            &lt;input class=&quot;field-input&quot; id=&quot;password&quot; type=&quot;password&quot; placeholder=&quot;Enter password...&quot; spellcheck=&quot;false&quot;&gt;
+            &lt;div class=&quot;hint&quot;&gt;Hint: &lt;span class=&quot;kw&quot;&gt;storedPassword&lt;/span&gt; = &quot;rog2026&quot;&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;button class=&quot;btn-login&quot; id=&quot;loginBtn&quot;&gt;Attempt Login&lt;/button&gt;
+          &lt;button class=&quot;btn-reset&quot; id=&quot;resetBtn&quot;&gt;Reset Session (val re-init)&lt;/button&gt;
+
+          &lt;div id=&quot;statusMsg&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- State visualizer --&gt;
+        &lt;div class=&quot;state-box&quot;&gt;
+          &lt;h3&gt;📊 Runtime State&lt;/h3&gt;
+          &lt;div class=&quot;state-sub&quot;&gt;Watch how &lt;span class=&quot;kw&quot;&gt;var&lt;/span&gt; mutates while &lt;span class=&quot;kw&quot;&gt;val&lt;/span&gt; stays locked.&lt;/div&gt;
+
+          &lt;div class=&quot;counter-panel&quot;&gt;
+            &lt;div class=&quot;var-tag&quot;&gt;var attemptCount&lt;/div&gt;
+            &lt;span id=&quot;attemptCount&quot;&gt;0&lt;/span&gt;
+            &lt;div class=&quot;counter-label&quot;&gt;Failed Attempts&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;val-vs-var&quot;&gt;
+            &lt;div class=&quot;vv-card val&quot;&gt;
+              &lt;div class=&quot;vv-h&quot;&gt;val storedPassword&lt;/div&gt;
+              &lt;p&gt;&lt;span class=&quot;status-dot&quot;&gt;&lt;/span&gt;Locked — never reassigned&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;vv-card var&quot;&gt;
+              &lt;div class=&quot;vv-h&quot;&gt;var attemptCount&lt;/div&gt;
+              &lt;p&gt;&lt;span class=&quot;status-dot&quot;&gt;&lt;/span&gt;Live — mutates on failure&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;live-log&quot; id=&quot;logBox&quot;&gt;
+            &lt;div class=&quot;log-line y&quot;&gt;// awaiting login attempt...&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    BUILT FOR &lt;b&gt;BSIT MWD · WITMWD3M1&lt;/b&gt; — KOTLIN FUNDAMENTALS TASK 4
+  &lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  // ---- Kotlin-equivalent logic, expressed in JS ----
+  const storedPassword = &quot;rog2026&quot;;   // acts like Kotlin&#x27;s `val` — never reassigned
+  let attemptCount = 0;               // acts like Kotlin&#x27;s `var` — mutates over time
+  const maxAttempts = 5;              // val — lockout threshold
+  let locked = false;
+
+  const passwordInput = document.getElementById(&#x27;password&#x27;);
+  const usernameInput = document.getElementById(&#x27;username&#x27;);
+  const loginBtn = document.getElementById(&#x27;loginBtn&#x27;);
+  const resetBtn = document.getElementById(&#x27;resetBtn&#x27;);
+  const statusMsg = document.getElementById(&#x27;statusMsg&#x27;);
+  const counterEl = document.getElementById(&#x27;attemptCount&#x27;);
+  const logBox = document.getElementById(&#x27;logBox&#x27;);
+
+  function addLog(text, cls){
+    const line = document.createElement(&#x27;div&#x27;);
+    line.className = &#x27;log-line &#x27; + (cls || &#x27;&#x27;);
+    line.textContent = text;
+    logBox.appendChild(line);
+    logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  function bumpCounter(){
+    counterEl.textContent = attemptCount;
+    counterEl.classList.remove(&#x27;bump&#x27;);
+    void counterEl.offsetWidth; // restart animation
+    counterEl.classList.add(&#x27;bump&#x27;);
+  }
+
+  function grantAccess(){
+    statusMsg.className = &#x27;ok&#x27;;
+    statusMsg.textContent = &#x27;✅ Access granted — password == storedPassword. Welcome, &#x27; + (usernameInput.value || &#x27;user&#x27;) + &#x27;.&#x27;;
+    addLog(&#x27;if (password == storedPassword) → true → grantAccess()&#x27;, &#x27;g&#x27;);
+    loginBtn.disabled = true;
+    loginBtn.style.opacity = &#x27;0.6&#x27;;
+    loginBtn.textContent = &#x27;Access Granted&#x27;;
+  }
+
+  function showError(){
+    attemptCount++;                 // var mutation, mirrors attemptCount++ in Kotlin
+    bumpCounter();
+    addLog(&#x27;else → attemptCount++ → showError()  [attemptCount = &#x27; + attemptCount + &#x27;]&#x27;, &#x27;r&#x27;);
+
+    if (attemptCount &gt;= maxAttempts){
+      locked = true;
+      statusMsg.className = &#x27;lock&#x27;;
+      statusMsg.textContent = &#x27;🔒 Too many failed attempts (&#x27; + attemptCount + &#x27;/&#x27; + maxAttempts + &#x27;). Login locked.&#x27;;
+      addLog(&#x27;attemptCount &gt;= maxAttempts → account locked&#x27;, &#x27;y&#x27;);
+      loginBtn.disabled = true;
+      loginBtn.style.opacity = &#x27;0.5&#x27;;
+    } else {
+      statusMsg.className = &#x27;err&#x27;;
+      statusMsg.textContent = &#x27;❌ Wrong password. Attempt &#x27; + attemptCount + &#x27; of &#x27; + maxAttempts + &#x27;.&#x27;;
+    }
+  }
+
+  loginBtn.addEventListener(&#x27;click&#x27;, () =&gt; {
+    if (locked) return;
+    const entered = passwordInput.value;
+
+    if (entered.trim() === &quot;&quot;){
+      statusMsg.className = &#x27;err&#x27;;
+      statusMsg.textContent = &#x27;⚠️ Please enter a password to test the logic.&#x27;;
+      return;
+    }
+
+    // This mirrors the exact Kotlin if/else from the assignment:
+    if (entered === storedPassword) {
+      grantAccess();
+    } else {
+      showError();
+    }
+  });
+
+  passwordInput.addEventListener(&#x27;keyup&#x27;, (e) =&gt; {
+    if (e.key === &#x27;Enter&#x27;) loginBtn.click();
+  });
+
+  resetBtn.addEventListener(&#x27;click&#x27;, () =&gt; {
+    attemptCount = 0;
+    locked = false;
+    passwordInput.value = &#x27;&#x27;;
+    bumpCounter();
+    statusMsg.className = &#x27;&#x27;;
+    statusMsg.textContent = &#x27;&#x27;;
+    statusMsg.style.display = &#x27;none&#x27;;
+    loginBtn.disabled = false;
+    loginBtn.style.opacity = &#x27;1&#x27;;
+    loginBtn.textContent = &#x27;Attempt Login&#x27;;
+    logBox.innerHTML = &#x27;&#x27;;
+    addLog(&#x27;// session reset — attemptCount reinitialized to 0&#x27;, &#x27;y&#x27;);
+  });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</div>
+
+<script>
+  var buttons = document.querySelectorAll('.nav-btn');
+  var panels = { task1: document.getElementById('panel-task1'), task2: document.getElementById('panel-task2'), task4: document.getElementById('panel-task4') };
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      Object.keys(panels).forEach(function (key) { panels[key].classList.remove('active'); });
+      panels[btn.dataset.target].classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
