@@ -74,6 +74,7 @@
   <span class="brand">// GIMBERT LUDOVICE — WITMWD3M1</span>
   <button type="button" class="nav-btn active" data-target="task1">Task 1 — App Planning</button>
   <button type="button" class="nav-btn" data-target="task2">Task 2 — UI/UX &amp; Material Design</button>
+  <button type="button" class="nav-btn" data-target="task3">Task 3 — Android Project Structure</button>
   <button type="button" class="nav-btn" data-target="task4">Task 4 — Kotlin Fundamentals</button>
 </nav>
 
@@ -921,6 +922,487 @@
 "></iframe>
 </div>
 
+<div class="task-panel" id="panel-task3">
+  <iframe class="task-frame" title="Task 3 — Android Project Structure" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Android Project Structure — Task 3 | Gimbert Ludovice&lt;/title&gt;
+&lt;style&gt;
+  :root{
+    --bg-0:#07080d; --bg-1:#0d0f18; --bg-2:#12141f;
+    --panel:#151827; --panel-2:#1a1d2e; --border:#262a40;
+    --rog-red:#ff003c; --rog-red-2:#ff4d6d; --cyan:#00e5ff; --purple:#7b2fff;
+    --text-0:#f2f3f8; --text-1:#b8bcd0; --text-2:#7c8099;
+    --mono:&#x27;Consolas&#x27;,&#x27;SFMono-Regular&#x27;,&#x27;Fira Code&#x27;,monospace;
+    --sans:&#x27;Segoe UI&#x27;,&#x27;Inter&#x27;,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255,0,60,0.10), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(0,229,255,0.08), transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(123,47,255,0.10), transparent 50%),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1) 40%, var(--bg-0));
+    color:var(--text-0); font-family:var(--sans);
+    min-height:100vh; overflow-x:hidden; position:relative;
+  }
+  body::before{
+    content:&quot;&quot;; position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(255,0,60,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,0,60,0.035) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(circle at 50% 30%, black 0%, transparent 75%);
+    pointer-events:none; z-index:0;
+  }
+  .scanline{
+    position:fixed; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--cyan), var(--rog-red), transparent);
+    opacity:0.6; animation:scan 6s linear infinite; z-index:1; pointer-events:none;
+  }
+  @keyframes scan{ 0%{transform:translateY(0);} 100%{transform:translateY(100vh);} }
+
+  .wrap{ position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
+
+  header.hero{
+    position:relative;
+    background:linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--border); border-radius:18px; padding:34px 30px; overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.02), 0 20px 60px -20px rgba(255,0,60,0.25);
+  }
+  header.hero::before{
+    content:&quot;&quot;; position:absolute; top:-40%; left:-10%; width:60%; height:200%;
+    background:linear-gradient(120deg, transparent, rgba(255,0,60,0.12), transparent);
+    transform:rotate(12deg); animation:sheen 5s ease-in-out infinite;
+  }
+  @keyframes sheen{ 0%,100%{transform:translateX(0) rotate(12deg);} 50%{transform:translateX(120%) rotate(12deg);} }
+  header.hero::after{
+    content:&quot;&quot;; position:absolute; right:-60px; top:-60px; width:220px; height:220px;
+    background:conic-gradient(from 0deg, var(--rog-red), var(--purple), var(--cyan), var(--rog-red));
+    filter:blur(60px); opacity:0.35; border-radius:50%; animation:spin 12s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+
+  .brand-row{ display:flex; align-items:center; gap:14px; margin-bottom:22px; position:relative; z-index:1; }
+  .rog-mark{
+    width:46px;height:46px; display:grid;place-items:center;
+    background:linear-gradient(145deg, var(--rog-red), #7a0018); border-radius:10px;
+    box-shadow:0 0 22px rgba(255,0,60,0.55); font-weight:900; font-size:20px; letter-spacing:-1px;
+  }
+  .brand-text{ font-size:12px; letter-spacing:4px; color:var(--text-2); text-transform:uppercase; }
+  .brand-text b{ color:var(--rog-red-2); letter-spacing:3px; }
+
+  h1.title{
+    margin:0 0 6px; font-size:clamp(24px, 4vw, 34px); font-weight:800; letter-spacing:0.5px;
+    background:linear-gradient(90deg, #fff, var(--rog-red-2) 60%, var(--cyan));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    position:relative; z-index:1;
+  }
+  .subtitle{ color:var(--text-1); font-size:14px; margin-bottom:22px; position:relative; z-index:1; }
+
+  .info-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; position:relative; z-index:1; }
+  .info-card{
+    background:rgba(255,255,255,0.03); border:1px solid var(--border); border-left:3px solid var(--rog-red);
+    border-radius:10px; padding:14px 16px; transition:transform .2s ease, border-color .2s ease;
+  }
+  .info-card:hover{ transform:translateY(-3px); border-left-color:var(--cyan); }
+  .info-label{ font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-2); margin-bottom:4px; }
+  .info-value{ font-size:16px; font-weight:600; color:var(--text-0); }
+
+  main{ margin-top:26px; display:flex; flex-direction:column; gap:26px; }
+
+  section.card{
+    background:linear-gradient(180deg, var(--panel), var(--bg-2)); border:1px solid var(--border);
+    border-radius:16px; padding:26px; position:relative; box-shadow:0 10px 40px -18px rgba(0,0,0,0.6);
+  }
+  section.card::before{
+    content:&quot;&quot;; position:absolute; top:0; left:20px; right:20px; height:1px;
+    background:linear-gradient(90deg, transparent, var(--rog-red), transparent);
+  }
+  .section-head{ display:flex; align-items:center; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+  .section-num{
+    font-family:var(--mono); font-weight:800; font-size:13px; color:var(--bg-0);
+    background:linear-gradient(135deg, var(--cyan), var(--purple));
+    width:30px;height:30px; border-radius:8px; display:grid;place-items:center; flex-shrink:0;
+  }
+  .section-head h2{ margin:0; font-size:19px; color:var(--text-0); }
+  .points-tag{
+    margin-left:auto; font-size:10.5px; letter-spacing:1px; padding:5px 12px;
+    border:1px solid var(--cyan); color:var(--cyan); border-radius:999px;
+    text-transform:uppercase; font-weight:700; white-space:nowrap;
+  }
+
+  .lead{ color:var(--text-1); line-height:1.75; font-size:14.5px; margin:0 0 16px; }
+  .lead:last-of-type{ margin-bottom:0; }
+  .kw{
+    font-family:var(--mono); background:rgba(255,0,60,0.12); color:var(--rog-red-2);
+    padding:1px 7px; border-radius:5px; font-size:13.5px; border:1px solid rgba(255,0,60,0.3);
+  }
+
+  /* file tree */
+  .tree{
+    background:#0a0b12; border:1px solid var(--border); border-left:3px solid var(--purple);
+    border-radius:10px; padding:18px 20px; font-family:var(--mono); font-size:13px;
+    line-height:1.9; color:var(--text-1); overflow-x:auto; white-space:pre;
+  }
+  .tree .fold{ color:var(--cyan); }
+  .tree .fil{ color:var(--rog-red-2); }
+  .tree .cmt{ color:var(--text-2); font-style:italic; }
+
+  /* chip list */
+  .chip-list{ display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 18px; }
+  .chip{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.3px;
+    background:rgba(0,229,255,0.08); color:var(--cyan); border:1px solid rgba(0,229,255,0.3);
+    padding:6px 12px; border-radius:999px;
+  }
+
+  /* live code panel */
+  .file-panel{ margin:16px 0; }
+  .file-panel:last-child{ margin-bottom:0; }
+  .file-path{
+    display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11.5px;
+    color:var(--text-2); margin-bottom:6px; letter-spacing:0.3px;
+  }
+  .file-path .dot{ width:7px;height:7px;border-radius:50%; background:var(--rog-red-2); box-shadow:0 0 8px rgba(255,0,60,0.6); }
+  pre.code-block{
+    background:#0a0b12; border:1px solid var(--border); border-left:3px solid var(--cyan);
+    border-radius:10px; padding:16px 18px; overflow-x:auto; font-family:var(--mono);
+    font-size:13px; line-height:1.65; color:#d6d9f0; margin:0;
+  }
+  pre.code-block .c-tag{ color:#ff6b9d; }
+  pre.code-block .c-str{ color:#9cffb0; }
+  pre.code-block .c-attr{ color:#7fd8ff; }
+  pre.code-block .c-cm{ color:#5c6180; font-style:italic; }
+  pre.code-block .c-kw{ color:#ff6b9d; }
+  pre.code-block .c-fn{ color:#ffd479; }
+
+  .file-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:760px){ .file-grid{ grid-template-columns:1fr; } }
+
+  .res-table{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin:16px 0 20px; }
+  .res-card{
+    background:rgba(255,255,255,0.025); border:1px solid var(--border); border-radius:12px; padding:14px 16px;
+  }
+  .res-card .res-name{
+    font-family:var(--mono); font-weight:800; font-size:13.5px; color:var(--cyan); margin-bottom:6px;
+  }
+  .res-card p{ margin:0; color:var(--text-2); font-size:12.5px; line-height:1.6; }
+
+  .logic-note{
+    display:flex; gap:10px; align-items:flex-start; background:rgba(0,229,255,0.06);
+    border:1px dashed rgba(0,229,255,0.35); border-radius:10px; padding:12px 14px;
+    font-size:13.5px; color:var(--text-1); margin-top:16px;
+  }
+  .logic-note span.ico{ color:var(--cyan); font-weight:800; font-family:var(--mono); }
+
+  .conclusion{
+    background:rgba(255,255,255,0.025); border:1px solid var(--border); border-left:3px solid var(--rog-red);
+    border-radius:12px; padding:18px 20px;
+  }
+  .conclusion p{ margin:0; color:var(--text-1); line-height:1.75; font-size:14.5px; }
+  .conclusion strong{ color:var(--text-0); }
+
+  footer{
+    text-align:center; margin-top:34px; padding-top:20px; border-top:1px solid var(--border);
+    color:var(--text-2); font-size:12px; letter-spacing:1px;
+  }
+  footer b{ color:var(--rog-red-2); }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;scanline&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+  &lt;header class=&quot;hero&quot;&gt;
+    &lt;div class=&quot;brand-row&quot;&gt;
+      &lt;div class=&quot;rog-mark&quot;&gt;R&lt;/div&gt;
+      &lt;div class=&quot;brand-text&quot;&gt;&lt;b&gt;REPUBLIC OF GAMERS&lt;/b&gt; // DEV LAB — TASK SUBMISSION&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h1 class=&quot;title&quot;&gt;Android Project Structure — Task 3&lt;/h1&gt;
+    &lt;div class=&quot;subtitle&quot;&gt;Manifest &amp;middot; Source Files &amp;middot; Resources — anatomy of an Android Studio project, illustrated with the actual project files&lt;/div&gt;
+
+    &lt;div class=&quot;info-grid&quot;&gt;
+      &lt;div class=&quot;info-card&quot;&gt;&lt;div class=&quot;info-label&quot;&gt;Student&lt;/div&gt;&lt;div class=&quot;info-value&quot;&gt;Gimbert Ludovice&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;info-card&quot;&gt;&lt;div class=&quot;info-label&quot;&gt;Year &amp;amp; Section&lt;/div&gt;&lt;div class=&quot;info-value&quot;&gt;2nd Year — WITMWD3M1&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;info-card&quot;&gt;&lt;div class=&quot;info-label&quot;&gt;Degree Program&lt;/div&gt;&lt;div class=&quot;info-value&quot;&gt;BSIT — Mobile &amp;amp; Web Development&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;info-card&quot;&gt;&lt;div class=&quot;info-label&quot;&gt;Professor&lt;/div&gt;&lt;div class=&quot;info-value&quot;&gt;John Kyle Martin&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+
+    &lt;!-- 01 HIERARCHY --&gt;
+    &lt;section class=&quot;card&quot;&gt;
+      &lt;div class=&quot;section-head&quot;&gt;
+        &lt;div class=&quot;section-num&quot;&gt;01&lt;/div&gt;
+        &lt;h2&gt;Overall Project Hierarchy&lt;/h2&gt;
+        &lt;div class=&quot;points-tag&quot;&gt;Live Files&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;lead&quot;&gt;
+        A standard Android project created in Android Studio follows a consistent directory layout.
+        The physical path on disk is &lt;span class=&quot;kw&quot;&gt;app/src/main/&lt;/span&gt;, containing three key
+        subfolders — &lt;span class=&quot;kw&quot;&gt;java/&lt;/span&gt; (or &lt;span class=&quot;kw&quot;&gt;kotlin/&lt;/span&gt;), &lt;span class=&quot;kw&quot;&gt;res/&lt;/span&gt;,
+        and &lt;span class=&quot;kw&quot;&gt;AndroidManifest.xml&lt;/span&gt;. Android Studio&#x27;s &lt;em&gt;Android view&lt;/em&gt; displays these in a
+        simplified, developer-friendly grouping, while the &lt;em&gt;Project view&lt;/em&gt; shows the true file-system hierarchy.
+      &lt;/p&gt;
+      &lt;div class=&quot;tree&quot;&gt;AppName/
+└── app/
+    ├── &lt;span class=&quot;fold&quot;&gt;manifests/&lt;/span&gt;
+    │   └── &lt;span class=&quot;fil&quot;&gt;AndroidManifest.xml&lt;/span&gt;
+    ├── &lt;span class=&quot;fold&quot;&gt;java/&lt;/span&gt; &lt;span class=&quot;cmt&quot;&gt;(or kotlin+java/)&lt;/span&gt;
+    │   └── com.example.appname/
+    │       ├── &lt;span class=&quot;fil&quot;&gt;MainActivity.java&lt;/span&gt; &lt;span class=&quot;cmt&quot;&gt;(or .kt)&lt;/span&gt;
+    │       └── &lt;span class=&quot;cmt&quot;&gt;... (other classes)&lt;/span&gt;
+    ├── &lt;span class=&quot;fold&quot;&gt;res/&lt;/span&gt;
+    │   ├── &lt;span class=&quot;fold&quot;&gt;layout/&lt;/span&gt;
+    │   ├── &lt;span class=&quot;fold&quot;&gt;drawable/&lt;/span&gt;
+    │   ├── &lt;span class=&quot;fold&quot;&gt;values/&lt;/span&gt;
+    │   ├── &lt;span class=&quot;fold&quot;&gt;mipmap/&lt;/span&gt;
+    │   └── &lt;span class=&quot;cmt&quot;&gt;... (other resource types)&lt;/span&gt;
+    └── &lt;span class=&quot;fil&quot;&gt;build.gradle&lt;/span&gt; &lt;span class=&quot;cmt&quot;&gt;(Module: app)&lt;/span&gt;&lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 02 MANIFEST --&gt;
+    &lt;section class=&quot;card&quot;&gt;
+      &lt;div class=&quot;section-head&quot;&gt;
+        &lt;div class=&quot;section-num&quot;&gt;02&lt;/div&gt;
+        &lt;h2&gt;The AndroidManifest.xml&lt;/h2&gt;
+        &lt;div class=&quot;points-tag&quot;&gt;Live File&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;lead&quot;&gt;
+        The &lt;span class=&quot;kw&quot;&gt;AndroidManifest.xml&lt;/span&gt; is the configuration blueprint of the entire application.
+        It lives at &lt;span class=&quot;kw&quot;&gt;app/src/main/AndroidManifest.xml&lt;/span&gt;, and the Android system reads it
+        before installing or running the app to understand what the app is and what it needs to function.
+      &lt;/p&gt;
+      &lt;div class=&quot;chip-list&quot;&gt;
+        &lt;span class=&quot;chip&quot;&gt;App Metadata&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Component Declaration&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Permissions&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Intent Filters&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Hardware/SDK Requirements&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;lead&quot;&gt;
+        In short, the manifest acts as the app&#x27;s &lt;strong&gt;identity card and permission form&lt;/strong&gt; — it tells
+        the operating system what the app is, what it can access, and how it should behave when launched.
+        Below is this project&#x27;s actual manifest, which registers &lt;span class=&quot;kw&quot;&gt;MainActivity&lt;/span&gt; as the
+        launcher screen via the &lt;span class=&quot;kw&quot;&gt;MAIN&lt;/span&gt; and &lt;span class=&quot;kw&quot;&gt;LAUNCHER&lt;/span&gt; intent filters.
+      &lt;/p&gt;
+      &lt;div class=&quot;file-panel&quot;&gt;
+        &lt;div class=&quot;file-path&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;app/src/main/AndroidManifest.xml&lt;/div&gt;
+        &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-cm&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span class=&quot;c-tag&quot;&gt;manifest&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;xmlns:android&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+    &lt;span class=&quot;c-attr&quot;&gt;package&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;com.example.simpleandroidapp&quot;&lt;/span&gt;&amp;gt;
+
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;application&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:allowBackup&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;true&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:icon&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;@mipmap/ic_launcher&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:label&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;@string/app_name&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:theme&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;@style/AppTheme&quot;&lt;/span&gt;&amp;gt;
+
+        &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;activity&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;.MainActivity&quot;&lt;/span&gt;
+            &lt;span class=&quot;c-attr&quot;&gt;android:exported&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;true&quot;&lt;/span&gt;&amp;gt;
+            &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;intent-filter&lt;/span&gt;&amp;gt;
+                &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;action&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;android.intent.action.MAIN&quot;&lt;/span&gt; /&amp;gt;
+                &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;android.intent.category.LAUNCHER&quot;&lt;/span&gt; /&amp;gt;
+            &amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;intent-filter&lt;/span&gt;&amp;gt;
+        &amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;activity&lt;/span&gt;&amp;gt;
+
+    &amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;application&lt;/span&gt;&amp;gt;
+
+&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;manifest&lt;/span&gt;&amp;gt;&lt;/pre&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 03 SOURCE FILES --&gt;
+    &lt;section class=&quot;card&quot;&gt;
+      &lt;div class=&quot;section-head&quot;&gt;
+        &lt;div class=&quot;section-num&quot;&gt;03&lt;/div&gt;
+        &lt;h2&gt;The Source Files&lt;/h2&gt;
+        &lt;div class=&quot;points-tag&quot;&gt;Live File&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;lead&quot;&gt;
+        Source files contain the actual program logic that makes the app functional, living under
+        &lt;span class=&quot;kw&quot;&gt;app/src/main/java/&lt;/span&gt; (even for Kotlin projects, unless renamed to &lt;span class=&quot;kw&quot;&gt;kotlin/&lt;/span&gt;),
+        organized under a package structure that mirrors the app&#x27;s domain name in reverse
+        (e.g. &lt;span class=&quot;kw&quot;&gt;com.example.myapp&lt;/span&gt;).
+      &lt;/p&gt;
+      &lt;div class=&quot;chip-list&quot;&gt;
+        &lt;span class=&quot;chip&quot;&gt;Activities&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Fragments&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Adapters&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Model Classes&lt;/span&gt;
+        &lt;span class=&quot;chip&quot;&gt;Utility / Helper Classes&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;lead&quot;&gt;
+        If the manifest is the app&#x27;s &lt;strong&gt;identity&lt;/strong&gt;, the source files are its &lt;strong&gt;brain&lt;/strong&gt; —
+        they handle event handling, business logic, and the data flow between the UI and the backend or local
+        storage. Here&#x27;s this project&#x27;s &lt;span class=&quot;kw&quot;&gt;MainActivity.java&lt;/span&gt;, which links to
+        &lt;span class=&quot;kw&quot;&gt;activity_main.xml&lt;/span&gt; and wires up a click listener:
+      &lt;/p&gt;
+      &lt;div class=&quot;file-panel&quot;&gt;
+        &lt;div class=&quot;file-path&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;app/src/main/java/com.example.simpleandroidapp/MainActivity.java&lt;/div&gt;
+        &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-kw&quot;&gt;package&lt;/span&gt; com.example.simpleandroidapp;
+
+&lt;span class=&quot;c-kw&quot;&gt;import&lt;/span&gt; android.os.Bundle;
+&lt;span class=&quot;c-kw&quot;&gt;import&lt;/span&gt; android.widget.Button;
+&lt;span class=&quot;c-kw&quot;&gt;import&lt;/span&gt; android.widget.TextView;
+&lt;span class=&quot;c-kw&quot;&gt;import&lt;/span&gt; androidx.appcompat.app.AppCompatActivity;
+
+&lt;span class=&quot;c-cm&quot;&gt;/**
+ * MainActivity - the entry point screen of the app.
+ * Demonstrates how source files handle UI logic and events.
+ */&lt;/span&gt;
+&lt;span class=&quot;c-kw&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;c-kw&quot;&gt;class&lt;/span&gt; MainActivity &lt;span class=&quot;c-kw&quot;&gt;extends&lt;/span&gt; AppCompatActivity {
+
+    &lt;span class=&quot;c-kw&quot;&gt;private&lt;/span&gt; TextView textViewMessage;
+    &lt;span class=&quot;c-kw&quot;&gt;private&lt;/span&gt; Button buttonClickMe;
+
+    &lt;span class=&quot;c-fn&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;c-kw&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;c-kw&quot;&gt;void&lt;/span&gt; onCreate(Bundle savedInstanceState) {
+        &lt;span class=&quot;c-kw&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
+        &lt;span class=&quot;c-cm&quot;&gt;// Connects this Activity to its layout resource file&lt;/span&gt;
+        setContentView(R.layout.activity_main);
+
+        &lt;span class=&quot;c-cm&quot;&gt;// Link Java variables to XML views by their IDs&lt;/span&gt;
+        textViewMessage = findViewById(R.id.textViewMessage);
+        buttonClickMe = findViewById(R.id.buttonClickMe);
+
+        &lt;span class=&quot;c-cm&quot;&gt;// Event handling: update the TextView when the button is clicked&lt;/span&gt;
+        buttonClickMe.setOnClickListener(v -&amp;gt;
+                textViewMessage.setText(getString(R.string.button_clicked_message))
+        );
+    }
+}&lt;/pre&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 04 RESOURCES --&gt;
+    &lt;section class=&quot;card&quot;&gt;
+      &lt;div class=&quot;section-head&quot;&gt;
+        &lt;div class=&quot;section-num&quot;&gt;04&lt;/div&gt;
+        &lt;h2&gt;The Resource (res) Files&lt;/h2&gt;
+        &lt;div class=&quot;points-tag&quot;&gt;4 Live Files&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;lead&quot;&gt;
+        The &lt;span class=&quot;kw&quot;&gt;res/&lt;/span&gt; folder contains all non-code assets — anything that defines the app&#x27;s
+        appearance, text, and static assets, separate from the logic. This decoupling of UI/content from code
+        makes the app easier to maintain, localize, and adapt to different devices.
+      &lt;/p&gt;
+
+      &lt;div class=&quot;res-table&quot;&gt;
+        &lt;div class=&quot;res-card&quot;&gt;&lt;div class=&quot;res-name&quot;&gt;layout/&lt;/div&gt;&lt;p&gt;XML files defining each screen&#x27;s UI structure — Buttons, TextViews, and ViewGroups like LinearLayout or ConstraintLayout.&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;res-card&quot;&gt;&lt;div class=&quot;res-name&quot;&gt;drawable/&lt;/div&gt;&lt;p&gt;Images, vector graphics, and custom shape/state drawables used for buttons, backgrounds, and icons.&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;res-card&quot;&gt;&lt;div class=&quot;res-name&quot;&gt;values/&lt;/div&gt;&lt;p&gt;Reusable constants — strings.xml (text, supports localization), colors.xml (palette), styles.xml (theming), dimens.xml (spacing).&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;res-card&quot;&gt;&lt;div class=&quot;res-name&quot;&gt;mipmap/&lt;/div&gt;&lt;p&gt;Launcher icon in multiple densities (mdpi → xxxhdpi) so Android picks the right resolution per device.&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;p class=&quot;lead&quot;&gt;
+        Using resources instead of hardcoded values lets the app support multiple screen densities, enable
+        localization (e.g. a &lt;span class=&quot;kw&quot;&gt;values-fr/&lt;/span&gt; folder), and keep a consistent design system.
+        Here are this project&#x27;s actual resource files:
+      &lt;/p&gt;
+
+      &lt;div class=&quot;file-grid&quot;&gt;
+        &lt;div class=&quot;file-panel&quot;&gt;
+          &lt;div class=&quot;file-path&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;res/layout/activity_main.xml&lt;/div&gt;
+          &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-cm&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span class=&quot;c-tag&quot;&gt;LinearLayout&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;xmlns:android&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+    &lt;span class=&quot;c-attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+    &lt;span class=&quot;c-attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+    &lt;span class=&quot;c-attr&quot;&gt;android:orientation&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;vertical&quot;&lt;/span&gt;
+    &lt;span class=&quot;c-attr&quot;&gt;android:gravity&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;center&quot;&lt;/span&gt;
+    &lt;span class=&quot;c-attr&quot;&gt;android:padding&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;16dp&quot;&lt;/span&gt;&amp;gt;
+
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;TextView&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;@+id/textViewMessage&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:text&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;@string/welcome_message&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:textSize&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;20sp&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:layout_marginBottom&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;24dp&quot;&lt;/span&gt; /&amp;gt;
+
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;Button&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;@+id/buttonClickMe&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;c-attr&quot;&gt;android:text&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;@string/button_text&quot;&lt;/span&gt; /&amp;gt;
+
+&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;LinearLayout&lt;/span&gt;&amp;gt;&lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;file-panel&quot;&gt;
+          &lt;div class=&quot;file-path&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;res/values/colors.xml&lt;/div&gt;
+          &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-cm&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span class=&quot;c-tag&quot;&gt;resources&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;colorPrimary&quot;&lt;/span&gt;&amp;gt;#6200EE&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;color&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;colorPrimaryDark&quot;&lt;/span&gt;&amp;gt;#3700B3&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;color&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;colorAccent&quot;&lt;/span&gt;&amp;gt;#03DAC5&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;color&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;resources&lt;/span&gt;&amp;gt;&lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;file-panel&quot;&gt;
+          &lt;div class=&quot;file-path&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;res/values/strings.xml&lt;/div&gt;
+          &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-cm&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span class=&quot;c-tag&quot;&gt;resources&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;app_name&quot;&lt;/span&gt;&amp;gt;Simple Android App&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;welcome_message&quot;&lt;/span&gt;&amp;gt;Hello, Gimbert!&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;button_text&quot;&lt;/span&gt;&amp;gt;Click Me&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;button_clicked_message&quot;&lt;/span&gt;&amp;gt;You clicked the button!&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;string&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;resources&lt;/span&gt;&amp;gt;&lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;file-panel&quot;&gt;
+          &lt;div class=&quot;file-path&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;res/values/styles.xml&lt;/div&gt;
+          &lt;pre class=&quot;code-block&quot;&gt;&lt;span class=&quot;c-cm&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span class=&quot;c-tag&quot;&gt;resources&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;AppTheme&quot;&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;parent&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;Theme.AppCompat.Light.DarkActionBar&quot;&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;colorPrimary&quot;&lt;/span&gt;&amp;gt;@color/colorPrimary&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;item&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;colorPrimaryDark&quot;&lt;/span&gt;&amp;gt;@color/colorPrimaryDark&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;item&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span class=&quot;c-tag&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;c-attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;c-str&quot;&gt;&quot;colorAccent&quot;&lt;/span&gt;&amp;gt;@color/colorAccent&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;item&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;style&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span class=&quot;c-tag&quot;&gt;resources&lt;/span&gt;&amp;gt;&lt;/pre&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;logic-note&quot;&gt;
+        &lt;span class=&quot;ico&quot;&gt;&amp;gt;_&lt;/span&gt;
+        &lt;span&gt;&lt;strong&gt;mipmap/README.txt:&lt;/strong&gt; this folder normally holds the app launcher icon
+        (ic_launcher.png / ic_launcher.webp) in multiple densities: mipmap-mdpi, mipmap-hdpi, mipmap-xhdpi,
+        mipmap-xxhdpi, mipmap-xxxhdpi. In Android Studio, right-click &lt;span class=&quot;kw&quot;&gt;res &amp;gt; New &amp;gt; Image Asset&lt;/span&gt;
+        to auto-generate these icon files.&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 05 CONCLUSION --&gt;
+    &lt;section class=&quot;card&quot;&gt;
+      &lt;div class=&quot;section-head&quot;&gt;
+        &lt;div class=&quot;section-num&quot;&gt;05&lt;/div&gt;
+        &lt;h2&gt;Conclusion&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;conclusion&quot;&gt;
+        &lt;p&gt;
+          A simple Android project is built on three interdependent pillars: the &lt;strong&gt;AndroidManifest.xml&lt;/strong&gt;,
+          which registers the app&#x27;s identity, components, and permissions with the operating system; the
+          &lt;strong&gt;source files&lt;/strong&gt;, which contain the executable logic written in Java or Kotlin; and the
+          &lt;strong&gt;resource (res) files&lt;/strong&gt;, which house all UI layouts, images, and constant values separately
+          from code logic. This separation of concerns — configuration, logic, and presentation — is a core design
+          principle of the Android framework, allowing for scalable, maintainable, and adaptable application development.
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    SUBMITTED BY &lt;b&gt;GIMBERT LUDOVICE&lt;/b&gt; — 2ND YEAR WITMWD3M1 — BSIT MOBILE &amp;amp; WEB DEVELOPMENT — PROF. JOHN KYLE MARTIN
+  &lt;/footer&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</div>
+
 <div class="task-panel" id="panel-task4">
   <iframe class="task-frame" title="Task 4 — Kotlin Fundamentals" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -1743,7 +2225,7 @@
 
 <script>
   var buttons = document.querySelectorAll('.nav-btn');
-  var panels = { task1: document.getElementById('panel-task1'), task2: document.getElementById('panel-task2'), task4: document.getElementById('panel-task4') };
+  var panels = { task1: document.getElementById('panel-task1'), task2: document.getElementById('panel-task2'), task3: document.getElementById('panel-task3'), task4: document.getElementById('panel-task4') };
 
   buttons.forEach(function (btn) {
     btn.addEventListener('click', function () {
